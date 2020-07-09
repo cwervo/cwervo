@@ -1,4 +1,9 @@
-### Hi there 👋
+### 👋🏼 hi hi
+
+I'm [Andrés Cuervo](http://cwervo.com/) & I like working on:
+
+![VR projects](https://media.giphy.com/media/t9vj4sjR8h1s9CBl1x/giphy.gif)
+![Three.js dancing](https://media.giphy.com/media/5q0w2TRn89GdS9Oso7/giphy.gif)
 
 <!--
 **cwervo/cwervo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
