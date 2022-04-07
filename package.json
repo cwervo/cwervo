@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "parcel": "^2.4.1"
+  },
+  "devDependencies": {
+    "@mdx-js/react": "^2.1.1",
+    "@parcel/transformer-mdx": "^2.4.1"
+  },
+  "frontend": {
+    "source": "app/index.html"
+  },
+  "backend": {
+    "source": "api/index.js"
+  }
+}
