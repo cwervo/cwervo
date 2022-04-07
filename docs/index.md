@@ -1,1 +1,1 @@
-https://web.archive.org/web/20220407212426/https://we.riseup.net/assets/40110/OberlinConsensusModel.pdf
+huh, this is updating pretty quickly
