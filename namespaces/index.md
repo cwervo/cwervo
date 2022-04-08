@@ -36,3 +36,8 @@ https://www.google.com/search?q=english+to+german&sxsrf=APq-WBtjg3eDhOAz7FI6-_hO
 `=>` ![](https://img.shields.io/crates/v/webrtc.svg)
 
 a `url` "pipes" to an image. `url` as root program in a linux command chain!
+
+
+## a REPL over CSS
+https://cssstats.com/stats/?url=google.com
+![](../images/css-stats.png)
