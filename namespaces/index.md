@@ -26,3 +26,13 @@ rest of the link is a light declarative program syntax
 https://www.google.com/search?q=english+to+german&sxsrf=APq-WBtjg3eDhOAz7FI6-_hOLWmGIDAKMQ%3A1649357569905&ei=ATNPYqv7NsibptQP6I2R2Ao&ved=0ahUKEwjr_77gz4L3AhXIjYkEHehGBKsQ4dUDCA4&uact=5&oq=english+to+german&gs_lcp=Cgdnd3Mtd2l6EAMyBwgjELADECcyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAEEcQsAMyBwgAELADEENKBAhBGABKBAhGGABQAFgAYJoCaAFwAXgAgAEAiAEAkgEAmAEAyAEKwAEB&sclient=gws-wiz
 ```
 [[more](https://twitter.com/cwervo/status/1512142085801005067)]
+
+## shields
+
+```
+![](https://img.shields.io/crates/v/webrtc.svg)
+```
+
+`=>` ![](https://img.shields.io/crates/v/webrtc.svg)
+
+a `url` "pipes" to an image. `url` as root program in a linux command chain!
