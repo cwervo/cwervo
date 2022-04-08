@@ -40,4 +40,4 @@ a `url` "pipes" to an image. `url` as root program in a linux command chain!
 
 ## a REPL over CSS
 https://cssstats.com/stats/?url=google.com
-![](../images/css-stats.png)
+![](../assets/images/css-stats.png)
