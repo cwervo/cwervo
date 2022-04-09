@@ -15,5 +15,12 @@ like [Screenotate](https://screenotate.com) but produces are.na blocks:
 
 sesh examples:
 
+---
+
+sesh is a tool for archiving your personal media
+
+EMITS: Are.na, PNG, .zip, GH, Drive, Dropbox, iCloud
+
+
 ![](../assets/videos/assembling-stop-motion-compressed.mp4)
 ![](../assets/videos/unboxing-stop-motion-compressed-trimmed.mp4)
