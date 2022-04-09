@@ -1,6 +1,6 @@
 ## MDUX
 
-**M**ulti**D**d*imensional **User** **Experience**
+**M**ulti**D**imensional **User** **Experience**
 
 You might imagine a [latent space](../all-our-latent-spaces/) of all possible interfaces. Digital & physical. What could that look like?
 
