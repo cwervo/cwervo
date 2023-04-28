@@ -1,6 +1,6 @@
 Blown away that [this](https://cdn.freesound.org/previews/648/648433_11943129-lq.mp3) can become [this](https://strudel.tidalcycles.org/?SzjB4M8TfF8j)
 
-Someday I'll investigate this more seriously but for now here's ChatGPT
+Someday I'll investigate this more seriously but for now here's ChatGPT-4's explanation of the code:
 
 <code>
 <pre>
