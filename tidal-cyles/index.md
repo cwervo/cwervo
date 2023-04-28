@@ -30,3 +30,25 @@ s("p")
     <li><code>.sustain(.6)</code>: This line sets the sustain level of the sound envelope to 0.6 (60% of the maximum amplitude).</li>
   </ul>
   <p>By chaining these effects and manipulations together, the code creates a unique, transformed version of the original sound sample.</p>
+
+
+  <br>
+
+  Taking some learning from that, here's a haunting variation:
+
+  <code>
+  <pre>
+samples({ p: 'https://cdn.freesound.org/previews/648/648433_11943129-lq.mp3' })
+
+s("p")
+  // .loopAt(32)
+  .loopAt(48)
+  // .chop(128)
+  .chop(4)
+  .jux(rev)
+  .shape(.2)
+  .decay(.1)
+  .sustain(.8)
+  
+  </pre>
+  </code>
