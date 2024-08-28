@@ -4,7 +4,7 @@ I was browsing the Walgreens by Union Square (TODO: link/add pic on Google Maps)
 
 Anyway, back to my Walgreens trip:
 
-![picture of vitamins / allergy aisle](link/to/pic)
+![picture of vitamins / allergy aisle](/assets/images/hydration-for-the-rest-of-us/aisle.png)
 
 I got the section of the store and noticed it's expanded rapidly since the last time I can into a convenience store (CVS, Walgreens, Duane Reed)! In this post I want to talk about what's on these shelves, what's good, what's bad, &amp; what's interesting.
 
