@@ -1,3 +1,7 @@
+# How I record my screen
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,17 +32,13 @@
 </head>
 <body>
 <h1>notes!</h1>
-<li><a href="./how-i-record-my-screen">How I Record My Screen</a></li>
-<li><a href="./hydration-for-the-rest-of-us/">Hydration for the rest of us</a></li>
-<li><a href="./tidal-cyles/">tidal cycles</a></li>
-<li><a href="./namespaces/index.html">namespaces</a></li>
-<li><a href="./light/index.html">light</a></li>
-<li><a href="./sesh/index.html">sesh</a></li>
-<li><a href="./vappeby-lessons/index.html">VAPPEBY</a></li>
-<li><a href="./cs-is-a-practice/index.html">CS is a community of practice</a></li>
-<li><a href="./the-thickness-of-clients/">The Thickness of Clients</a></li>
-<li><a href="./all-our-latent-spaces/">All our latent spaces</a></li>
-<li><a href="./towards-universal-bits/">Towards Universal Bits</a></li>
+<p>
+I use <a href="https://github.com/wulkano/Kap">Kap</a> and then "Open with ..." <a href="https://github.com/sindresorhus/Gifski">GifSki</a>
+</p>
+
+<p>
+I usually record my screen in 16:9 because <a href="https://x.com/steveruizok/status/1398757340971679755">that's how the good folks at Tldraw do it</a>. Unlike Steve, I record in full screen resolution and downsize the resolution in Gifski. Personal preference ¯\_(ツ)_/¯
+</p>
 
 <a href="https://github.dev/cwervo/cwervo" style="color: gray">edit</a>
 </body>
