@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Information Utility</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            font-family: sans-serif;
+            
+        }
+        .info-card {
+            background-color: #f9fafb; /* gray-50 */
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb; /* gray-200 */
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            font-weight: 500;
+            color: #4b5563; /* gray-600 */
+        }
+        .info-value {
+            color: #1f2937; /* gray-800 */
+            text-align: right;
+            word-break: break-all;
+        }
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border: 2px solid transparent;
+        }
+        .tab-button.active {
+            background-color: #ffffff;
+            color: #1e40af; /* blue-800 */
+            border-color: #dbeafe; /* blue-100 */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        .tab-button:not(.active) {
+            color: #4b5563; /* gray-600 */
+            background-color: transparent;
+        }
+        .moodboard-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .moodboard-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-7xl">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">System Information Utility</h1>
+            <p class="text-md text-gray-500 mt-2">A portable tool to quickly view system specs from your browser.</p>
+        </header>
+        
+        <!-- How to Use Section -->
+        <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-lg mb-8" role="alert">
+            <p class="font-bold">How to Use as a Portable Tool</p>
+            <p>Save this webpage (Ctrl+S or Cmd+S) as an HTML file onto a USB drive. You can then open this file in a web browser on any computer to view its specs, no internet connection required.</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="mb-8 flex justify-center bg-gray-200/80 p-2 rounded-lg backdrop-blur-sm">
+            <button id="info-tab-btn" class="tab-button active" onclick="showTab('info')">System Report</button>
+            <button id="moodboard-tab-btn" class="tab-button" onclick="showTab('moodboard')">Inspiration Moodboard</button>
+        </div>
+
+        <!-- Main Content -->
+        <main>
+            <!-- System Information Tab -->
+            <div id="info-tab">
+                <div class="flex justify-end mb-4">
+                    <button id="copy-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2H6zm8 2V5a1 1 0 00-1-1H7a1 1 0 00-1 1v.083l.083.083L12.167 10l-6.083 6.083L6 16.167V17a1 1 0 001 1h6a1 1 0 001-1v-.833l-.083-.083L9.833 10l6.083-6.083L16 3.833V5z" /></svg>
+                        <span>Copy Full Report</span>
+                    </button>
+                </div>
+                <textarea id="report-content" class="absolute -left-full"></textarea>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- OS & Browser -->
+                    <div class="info-card">
+                        <h2 class="text-xl font-bold mb-4 text-blue-800">Operating System & Browser</h2>
+                        <div class="info-item"><span class="info-label">Operating System</span><span id="os" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Browser</span><span id="browser" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">User Agent</span><span id="user-agent" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Platform</span><span id="platform" class="info-value"></span></div>
+                    </div>
+
+                    <!-- Hardware -->
+                    <div class="info-card">
+                        <h2 class="text-xl font-bold mb-4 text-blue-800">Hardware</h2>
+                        <div class="info-item"><span class="info-label">CPU Cores</span><span id="cpu-cores" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Device Memory (RAM)</span><span id="ram" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Touch Points</span><span id="touch-points" class="info-value"></span></div>
+                    </div>
+
+                    <!-- Display -->
+                    <div class="info-card">
+                        <h2 class="text-xl font-bold mb-4 text-blue-800">Display</h2>
+                        <div class="info-item"><span class="info-label">Screen Resolution</span><span id="screen-res" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Available Screen Space</span><span id="avail-res" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Color Depth</span><span id="color-depth" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Pixel Depth</span><span id="pixel-depth" class="info-value"></span></div>
+                    </div>
+
+                    <!-- Connectivity & Locale -->
+                    <div class="info-card">
+                        <h2 class="text-xl font-bold mb-4 text-blue-800">Connectivity & Locale</h2>
+                        <div class="info-item"><span class="info-label">Status</span><span id="online-status" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Language</span><span id="language" class="info-value"></span></div>
+                        <div class="info-item"><span class="info-label">Cookies Enabled</span><span id="cookies-enabled" class="info-value"></span></div>
+                    </div>
+                </div>
+                <div class="text-center text-gray-500 text-sm mt-4">
+                    <p>Note: This information is based on what the browser reports. Some data, like detailed hardware specs or running software, cannot be accessed for security and privacy reasons.</p>
+                </div>
+            </div>
+
+            <!-- Moodboard Tab -->
+            <div id="moodboard-tab" class="hidden">
+                 <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">Inspiration Moodboard</h2>
+                 <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">This tool is inspired by the clean, data-dense interfaces of classic system utilities and modern dashboards. The goal is clarity, readability, and quick access to information.</p>
+                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Speccy/CPU-Z -->
+                    <div class="moodboard-card bg-white">
+                        <img src="https://placehold.co/600x400/1f2937/ffffff?text=Classic+System+Utilities" alt="Classic System Utilities" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-2">Classic Utilities (Speccy, CPU-Z)</h3>
+                            <p class="text-gray-600">Inspiration from the no-nonsense, tree-structured layout that presents deep technical data clearly. The focus is on density and accuracy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Windows Task Manager -->
+                    <div class="moodboard-card bg-white">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Modern+OS+Dashboards" alt="Modern OS Dashboards" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-2">Modern OS Dashboards (Task Manager)</h3>
+                            <p class="text-gray-600">Modern OS tools use clean graphs and separated modules. We take inspiration from the clear categorization and use of whitespace.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Web Dashboards -->
+                    <div class="moodboard-card bg-white">
+                        <img src="https://placehold.co/600x400/10b981/ffffff?text=Web+Analytics+Dashboards" alt="Web Analytics Dashboards" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-2">Web Analytics Dashboards</h3>
+                            <p class="text-gray-600">Inspiration from web platforms like Vercel or Netlify. They excel at presenting data in clean, responsive "cards" with strong typography.</p>
+                        </div>
+                    </div>
+
+                 </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- Tab Switching Logic ---
+        const tabs = ['info', 'moodboard'];
+        const buttons = {
+            info: document.getElementById('info-tab-btn'),
+            moodboard: document.getElementById('moodboard-tab-btn')
+        };
+        const tabContents = {
+            info: document.getElementById('info-tab'),
+            moodboard: document.getElementById('moodboard-tab')
+        };
+
+        function showTab(tabName) {
+            tabs.forEach(tab => {
+                const isCurrentTab = tab === tabName;
+                tabContents[tab].classList.toggle('hidden', !isCurrentTab);
+                buttons[tab].classList.toggle('active', isCurrentTab);
+            });
+        }
+
+        // --- System Information Gathering Logic ---
+        function getSystemInfo() {
+            const ua = navigator.userAgent;
+
+            // Helper function to parse User Agent String
+            const parseUA = (agent) => {
+                let os = "Unknown";
+                if (agent.indexOf("Win") != -1) os = "Windows";
+                if (agent.indexOf("Mac") != -1) os = "macOS";
+                if (agent.indexOf("Linux") != -1) os = "Linux";
+                if (agent.indexOf("Android") != -1) os = "Android";
+                if (agent.indexOf("like Mac") != -1) os = "iOS"; // For iPad
+
+                let browser = "Unknown";
+                if (agent.indexOf("Firefox") > -1) browser = "Mozilla Firefox";
+                else if (agent.indexOf("Edg") > -1) browser = "Microsoft Edge";
+                else if (agent.indexOf("Chrome") > -1 && agent.indexOf("Safari") > -1) browser = "Google Chrome";
+                else if (agent.indexOf("Safari") > -1 && agent.indexOf("Chrome") == -1) browser = "Apple Safari";
+                
+                return { os, browser };
+            };
+
+            const { os, browser } = parseUA(ua);
+
+            // Populate OS & Browser
+            document.getElementById('os').textContent = os;
+            document.getElementById('browser').textContent = browser;
+            document.getElementById('user-agent').textContent = navigator.userAgent;
+            document.getElementById('platform').textContent = navigator.platform;
+
+            // Populate Hardware
+            document.getElementById('cpu-cores').textContent = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} logical cores` : 'Not Available';
+            document.getElementById('ram').textContent = navigator.deviceMemory ? `~${navigator.deviceMemory} GB` : 'Not Available';
+            document.getElementById('touch-points').textContent = navigator.maxTouchPoints > 0 ? `${navigator.maxTouchPoints} touch points supported` : 'No touch support';
+
+            // Populate Display
+            document.getElementById('screen-res').textContent = `${screen.width} x ${screen.height} pixels`;
+            document.getElementById('avail-res').textContent = `${screen.availWidth} x ${screen.availHeight} pixels`;
+            document.getElementById('color-depth').textContent = `${screen.colorDepth}-bit`;
+            document.getElementById('pixel-depth').textContent = `${screen.pixelDepth}-bit`;
+
+            // Populate Connectivity & Locale
+            document.getElementById('online-status').textContent = navigator.onLine ? 'Online' : 'Offline';
+            document.getElementById('language').textContent = navigator.language;
+            document.getElementById('cookies-enabled').textContent = navigator.cookieEnabled ? 'Enabled' : 'Disabled';
+        }
+
+        // --- Copy to Clipboard Logic ---
+        document.getElementById('copy-btn').addEventListener('click', () => {
+            const reportItems = document.querySelectorAll('.info-item');
+            let reportText = "--- System Information Report ---\n\n";
+            
+            reportItems.forEach(item => {
+                const label = item.querySelector('.info-label').textContent;
+                const value = item.querySelector('.info-value').textContent;
+                reportText += `${label}: ${value}\n`;
+            });
+
+            const reportTextArea = document.getElementById('report-content');
+            reportTextArea.value = reportText;
+            reportTextArea.select();
+            
+            try {
+                // Use execCommand for broader compatibility, especially in iFrames
+                document.execCommand('copy');
+                const btn = document.getElementById('copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg> <span>Copied!</span>`;
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy report. Please copy manually.');
+            }
+        });
+
+        // --- Initial Load ---
+        window.onload = () => {
+            getSystemInfo();
+            showTab('info'); // Ensure the main tab is active on load
+        };
+    </script>
+
+</body>
+</html>
